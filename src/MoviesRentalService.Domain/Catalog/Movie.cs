@@ -22,5 +22,14 @@ namespace MoviesRentalService.Domain.Catalog
         public int Stock { get; private set; }
 
         public decimal Price { get; private  set; }
+
+
+        public void Update(string name, string description, int stock, decimal price)
+        {
+            Name = name;
+            Description = description;
+            Stock = stock;
+            Price = price;
+        }
     }
 }
