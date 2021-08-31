@@ -1,10 +1,5 @@
 ﻿using FluentAssertions;
 using MoviesRentalService.Domain.Catalog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace MoviesRentalService.UnitTests.Domain
@@ -28,7 +23,6 @@ namespace MoviesRentalService.UnitTests.Domain
             movie.Price.Should().Be(price);
         }
 
-
         [Fact]
         public void Should_Update_Movie()
         {
@@ -50,6 +44,32 @@ namespace MoviesRentalService.UnitTests.Domain
             movie.Description.Should().Be(description);
             movie.Stock.Should().Be(stock);
             movie.Price.Should().Be(price);
+        }
+
+        [Fact]
+        public void When_Passed_Zero_To_Stock_Should_Return_Has_Stock_False()
+        {
+            string name = "The lord of the rings - Return of the king";
+            string description = "Adventure movie";
+            int stock = 0;
+            decimal price = 10.5M;
+
+            var movie = new Movie(name, description, stock, price);
+
+            movie.HasStock().Should().BeFalse();
+        }
+
+        [Fact]
+        public void When_Passed_Greater_Than_Zero_To_Stock_Should_Return_Has_Stock_True()
+        {
+            string name = "The lord of the rings - Return of the king";
+            string description = "Adventure movie";
+            int stock = 10;
+            decimal price = 10.5M;
+
+            var movie = new Movie(name, description, stock, price);
+
+            movie.HasStock().Should().BeTrue();
         }
     }
 }

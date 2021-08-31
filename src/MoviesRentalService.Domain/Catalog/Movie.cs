@@ -31,5 +31,7 @@ namespace MoviesRentalService.Domain.Catalog
             Stock = stock;
             Price = price;
         }
+
+        public bool HasStock() => Stock > 0;
     }
 }
