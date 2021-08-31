@@ -21,6 +21,7 @@ namespace MoviesRentalService.UnitTests.Domain
 
             var user = new User(name, email, password, role);
 
+            user.Id.Should().NotBeEmpty();
             user.Email.Should().Be(email);
             user.Name.Should().Be(name);
             user.Password.Should().Be(password);
