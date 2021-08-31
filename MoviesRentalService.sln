@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6B4C3CE6-B431-4D63-9F26-D9FAFE8B9F96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesRentalService.Domain", "src\MoviesRentalService.Domain\MoviesRentalService.Domain.csproj", "{78A82A35-22A5-44D3-B4BC-44D7F9CDEEED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78A82A35-22A5-44D3-B4BC-44D7F9CDEEED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A82A35-22A5-44D3-B4BC-44D7F9CDEEED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A82A35-22A5-44D3-B4BC-44D7F9CDEEED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A82A35-22A5-44D3-B4BC-44D7F9CDEEED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{78A82A35-22A5-44D3-B4BC-44D7F9CDEEED} = {6B4C3CE6-B431-4D63-9F26-D9FAFE8B9F96}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C75BC0DE-28CE-4BD7-B4D9-DCE413AE642E}
+	EndGlobalSection
+EndGlobal
