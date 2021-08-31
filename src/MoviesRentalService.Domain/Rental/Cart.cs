@@ -29,5 +29,10 @@ namespace MoviesRentalService.Domain.Rental
             Items.Add(item);
             return true;
         }
+
+        public void Clean()
+        {
+            Items = new HashSet<CartItem>();
+        }
     }
 }
