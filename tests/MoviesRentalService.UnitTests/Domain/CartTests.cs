@@ -54,11 +54,40 @@ namespace MoviesRentalService.UnitTests.Domain
 
             var movie = new Movie(name, description, stock, price);
             var cartItem = new CartItem(movie);
+            var cartItemTwo = new CartItem(movie);
 
             cart.Add(cartItem);
             bool addedTwice = cart.Add(cartItem);
 
             addedTwice.Should().BeFalse();
+        }
+
+        [Fact]
+        public void Should_Add_Two_Items()
+        {
+            var userId = Guid.NewGuid();
+            var cart = new Cart(userId);
+
+            string name = "The lord of the rings - Return of the king";
+            string description = "Adventure movie";
+            int stock = 10;
+            decimal price = 10.5M;
+            var returnOfTheKing = new Movie(name, description, stock, price);
+
+            name = "The lord of the rings - Return of the king";
+            description = "Adventure movie";
+            stock = 10;
+            price = 10.5M;
+            var theTwoTowers = new Movie(name, description, stock, price);
+
+            var cartItem = new CartItem(returnOfTheKing);
+            var cartItemTwo = new CartItem(theTwoTowers);
+
+            cart.Add(cartItem);
+            bool addedTwice = cart.Add(cartItemTwo);
+
+            addedTwice.Should().BeTrue();
+            cart.Items.Should().HaveCount(2);
         }
 
         [Fact]
