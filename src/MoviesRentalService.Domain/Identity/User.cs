@@ -4,14 +4,16 @@ namespace MoviesRentalService.Domain.Identity
 {
     public class User
     {
-        public User(string name, string email, string password, string role)
+        public User(string name, string email, string role)
         {
             Id = Guid.NewGuid();
             Name = name;
-            Email = email;
-            Password = password;
+            Email = email.ToLower();
             Role = role;
         }
+
+        public void SetPasswordHash(string password)
+                => this.Password = password;
 
         public Guid Id { get; private set; }
 
