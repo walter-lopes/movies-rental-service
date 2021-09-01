@@ -32,7 +32,7 @@ namespace MoviesRentalService.UnitTests.Domain
             int stock = 10;
             decimal price = 10.5M;
             var movie = new Movie(name, description, stock, price);
-            var cartItem = new CartItem(movie);
+            var cartItem = new RentalItem(movie);
 
             bool added = cart.Add(cartItem);
 
@@ -53,11 +53,11 @@ namespace MoviesRentalService.UnitTests.Domain
             decimal price = 10.5M;
 
             var movie = new Movie(name, description, stock, price);
-            var cartItem = new CartItem(movie);
-            var cartItemTwo = new CartItem(movie);
+            var cartItem = new RentalItem(movie);
+            var cartItemTwo = new RentalItem(movie);
 
             cart.Add(cartItem);
-            bool addedTwice = cart.Add(cartItem);
+            bool addedTwice = cart.Add(cartItemTwo);
 
             addedTwice.Should().BeFalse();
         }
@@ -80,8 +80,8 @@ namespace MoviesRentalService.UnitTests.Domain
             price = 10.5M;
             var theTwoTowers = new Movie(name, description, stock, price);
 
-            var cartItem = new CartItem(returnOfTheKing);
-            var cartItemTwo = new CartItem(theTwoTowers);
+            var cartItem = new RentalItem(returnOfTheKing);
+            var cartItemTwo = new RentalItem(theTwoTowers);
 
             cart.Add(cartItem);
             bool addedTwice = cart.Add(cartItemTwo);
@@ -101,7 +101,7 @@ namespace MoviesRentalService.UnitTests.Domain
             decimal price = 10.5M;
 
             var movie = new Movie(name, description, stock, price);
-            var cartItem = new CartItem(movie);
+            var cartItem = new RentalItem(movie);
 
             cart.Add(cartItem);
             cart.Clean();

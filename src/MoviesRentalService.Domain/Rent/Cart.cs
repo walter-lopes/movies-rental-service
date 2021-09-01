@@ -9,17 +9,17 @@ namespace MoviesRentalService.Domain.Rental
         {
             Id = Guid.NewGuid();
             UserId = userId;
-            Items = new HashSet<CartItem>();
+            Items = new HashSet<RentalItem>();
         }
 
         public Guid Id { get; set; }
 
-        public HashSet<CartItem> Items { get; set; }
+        public HashSet<RentalItem> Items { get; set; }
 
         public Guid UserId { get; set; }
 
 
-        public bool Add(CartItem item)
+        public bool Add(RentalItem item)
         {
             if (Items.Contains(item))
             {
@@ -32,7 +32,7 @@ namespace MoviesRentalService.Domain.Rental
 
         public void Clean()
         {
-            Items = new HashSet<CartItem>();
+            Items = new HashSet<RentalItem>();
         }
     }
 }
