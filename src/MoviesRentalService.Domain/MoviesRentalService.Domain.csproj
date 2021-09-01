@@ -3,5 +3,11 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-
+  <ItemGroup>
+    <PackageReference Include="Aloha" Version="2.0.1" />
+    <PackageReference Include="Aloha.CQRS.Commands" Version="2.0.1" />
+    <PackageReference Include="Aloha.CQRS.Events" Version="2.0.1" />
+    <PackageReference Include="Aloha.CQRS.Queries" Version="2.0.1" />
+    <PackageReference Include="Aloha.CQRS.Notifications" Version="2.0.1" />
+  </ItemGroup>
 </Project>
