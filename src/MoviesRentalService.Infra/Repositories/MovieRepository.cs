@@ -26,6 +26,13 @@ namespace MoviesRentalService.Infra.Repositories
             return await Collection.Find(filter).FirstOrDefaultAsync();
         }
 
+        public async Task<IEnumerable<Movie>> GetByIdsAsync(IEnumerable<Guid> ids)
+        {
+            var filter = Builders<Movie>.Filter.In(x => x.Id, ids);
+
+            return await Collection.Find(filter).ToListAsync();
+        }
+
         public void Insert(Movie movie)
         {
             DbContext.AddCommand(async () => await Collection.InsertOneAsync(movie));

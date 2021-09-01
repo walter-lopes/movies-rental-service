@@ -12,6 +12,8 @@ namespace MoviesRentalService.Domain.Catalog.Repositories
 
         Task<Movie> GetByIdAsync(Guid id);
 
+        Task<IEnumerable<Movie>> GetByIdsAsync(IEnumerable<Guid> ids);
+
         Task<IEnumerable<Movie>> FullSearchAsync(string @param);
     }
 }
