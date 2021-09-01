@@ -4,4 +4,12 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Catalog\CommandHandlers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MoviesRentalService.Domain\MoviesRentalService.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
