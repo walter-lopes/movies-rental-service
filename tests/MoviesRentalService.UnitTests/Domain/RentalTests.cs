@@ -17,9 +17,8 @@ namespace MoviesRentalService.UnitTests.Domain
 
             string name = "The lord of the rings - Return of the king";
             string description = "Adventure movie";
-            int stock = 10;
             decimal price = 10.5M;
-            var returnOfTheKing = new Movie(name, description, stock, price);
+            var returnOfTheKing = new Movie(name, description, price);
 
             var cartItem = new RentalItem(returnOfTheKing);
 
@@ -43,15 +42,13 @@ namespace MoviesRentalService.UnitTests.Domain
 
             string name = "The lord of the rings - Return of the king";
             string description = "Adventure movie";
-            int stock = 10;
             decimal price = 10.5M;
-            var returnOfTheKing = new Movie(name, description, stock, price);
+            var returnOfTheKing = new Movie(name, description, price);
 
             name = "The lord of the rings - Return of the king";
             description = "Adventure movie";
-            stock = 10;
             price = 20;
-            var theTwoTowers = new Movie(name, description, stock, price);
+            var theTwoTowers = new Movie(name, description, price);
 
             var cartItem = new RentalItem(returnOfTheKing);
             var cartItemTwo = new RentalItem(theTwoTowers);

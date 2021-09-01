@@ -29,9 +29,8 @@ namespace MoviesRentalService.UnitTests.Domain
             var cart = new Cart(userId);
             string name = "The lord of the rings - Return of the king";
             string description = "Adventure movie";
-            int stock = 10;
             decimal price = 10.5M;
-            var movie = new Movie(name, description, stock, price);
+            var movie = new Movie(name, description, price);
             var cartItem = new RentalItem(movie);
 
             bool added = cart.Add(cartItem);
@@ -49,10 +48,9 @@ namespace MoviesRentalService.UnitTests.Domain
             var cart = new Cart(userId);
             string name = "The lord of the rings - Return of the king";
             string description = "Adventure movie";
-            int stock = 10;
             decimal price = 10.5M;
 
-            var movie = new Movie(name, description, stock, price);
+            var movie = new Movie(name, description, price);
             var cartItem = new RentalItem(movie);
             var cartItemTwo = new RentalItem(movie);
 
@@ -70,15 +68,13 @@ namespace MoviesRentalService.UnitTests.Domain
 
             string name = "The lord of the rings - Return of the king";
             string description = "Adventure movie";
-            int stock = 10;
             decimal price = 10.5M;
-            var returnOfTheKing = new Movie(name, description, stock, price);
+            var returnOfTheKing = new Movie(name, description, price);
 
             name = "The lord of the rings - Return of the king";
             description = "Adventure movie";
-            stock = 10;
             price = 10.5M;
-            var theTwoTowers = new Movie(name, description, stock, price);
+            var theTwoTowers = new Movie(name, description, price);
 
             var cartItem = new RentalItem(returnOfTheKing);
             var cartItemTwo = new RentalItem(theTwoTowers);
@@ -97,10 +93,9 @@ namespace MoviesRentalService.UnitTests.Domain
             var cart = new Cart(userId);
             string name = "The lord of the rings - Return of the king";
             string description = "Adventure movie";
-            int stock = 10;
             decimal price = 10.5M;
 
-            var movie = new Movie(name, description, stock, price);
+            var movie = new Movie(name, description, price);
             var cartItem = new RentalItem(movie);
 
             cart.Add(cartItem);
