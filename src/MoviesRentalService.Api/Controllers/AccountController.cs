@@ -16,15 +16,12 @@ namespace MoviesRentalService.Api.Controllers
     public class AccountController : AlohaController
     {
         private readonly ICommandDispatcher _commandDispatcher;
-        private readonly IQueryDispatcher _queryDispatcher;
 
         public AccountController(ICommandDispatcher commandDispatcher,
-                                 IQueryDispatcher queryDispatcher,
                                  INotificationDispatcher notificationDispatcher)
             : base(notificationDispatcher)
         {
             _commandDispatcher = commandDispatcher;
-            _queryDispatcher = queryDispatcher;
         }
 
         [AllowAnonymous]
