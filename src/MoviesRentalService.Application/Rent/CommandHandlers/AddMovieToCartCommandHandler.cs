@@ -1,9 +1,13 @@
 ﻿using Aloha.CQRS.Commands;
+using Aloha.CQRS.Notifications;
+using Aloha.Notifications;
 using MoviesRentalService.Application.Rent.Command;
 using MoviesRentalService.Domain.Catalog;
 using MoviesRentalService.Domain.Catalog.Repositories;
 using MoviesRentalService.Domain.Rent;
 using MoviesRentalService.Domain.Rent.Repositories;
+using MoviesRentalService.Infra.UoW;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace MoviesRentalService.Application.Rent.CommandHandlers
@@ -12,27 +16,53 @@ namespace MoviesRentalService.Application.Rent.CommandHandlers
     {
         private readonly ICartRepository _cartRepository;
         private readonly IMovieRepository _movieRepository;
+        private readonly INotificationDispatcher _notificationDispatcher;
+        private readonly IUnitOfWork _uoW;
 
-        public AddMovieToCartCommandHandler(ICartRepository cartRepository)
+        public AddMovieToCartCommandHandler(ICartRepository cartRepository, IMovieRepository movieRepository, INotificationDispatcher notificationDispatcher, IUnitOfWork uoW)
         {
             _cartRepository = cartRepository;
+            _movieRepository = movieRepository;
+            _notificationDispatcher = notificationDispatcher;
+            _uoW = uoW;
         }
 
         public async Task HandleAsync(AddMovieToCartCommand command)
         {
-            var cartTask = _cartRepository.GetByUserIdAsync(command.UserId);
-            var movieTask = _movieRepository.GetByIdAsync(command.MovieId);
+            try
+            {
+                var cartTask = _cartRepository.GetByUserIdAsync(command.UserId);
+                var movieTask = _movieRepository.GetByIdAsync(command.MovieId);
 
-            await Task.WhenAll(cartTask, movieTask);
+                await Task.WhenAll(cartTask, movieTask);
 
-            Cart cart = cartTask.Result;
-            Movie movie = movieTask.Result;
+                Cart cart = cartTask.Result;
+                Movie movie = movieTask.Result;
 
-            var item = new RentalItem(movie);
+                if (cart is null)
+                {
+                    await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.NotFound, "Cart not found."));
+                    return;
+                }
 
-            cart.Add(item);
+                if (movie is null)
+                {
+                    await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.NotFound, "Movie not found."));
+                    return;
+                }
 
-            _cartRepository.Update(cart);
+                var item = new RentalItem(movie);
+
+                cart.Add(item);
+
+                _cartRepository.Update(cart);
+
+                await _uoW.Commit();
+            }
+            catch (System.Exception)
+            {
+                await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.InternalServerError, "Internal Server Error."));
+            }      
         }
     }
 }

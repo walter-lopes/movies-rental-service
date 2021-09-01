@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MoviesRentalService.Domain.Rent
 {
@@ -34,5 +35,7 @@ namespace MoviesRentalService.Domain.Rent
         {
             Items = new HashSet<RentalItem>();
         }
+
+        public bool IsEmpty() => !Items.Any();
     }
 }

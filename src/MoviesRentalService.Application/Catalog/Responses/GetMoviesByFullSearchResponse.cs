@@ -12,6 +12,8 @@ namespace MoviesRentalService.Application.Catalog.Responses
             Movies = movies.Select(movie => new GetMovieByFullSearchResponse(movie));
         }
 
+        public GetMoviesByFullSearchResponse() { }
+
         public IEnumerable<GetMovieByFullSearchResponse> Movies { get; set; }
     }
 

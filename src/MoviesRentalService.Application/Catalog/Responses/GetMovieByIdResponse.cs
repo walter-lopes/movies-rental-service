@@ -13,6 +13,8 @@ namespace MoviesRentalService.Application.Catalog.Responses
             Price = movie.Price;
         }
 
+        public GetMovieByIdResponse() { }
+
         public Guid Id { get; private set; }
 
         public string Name { get; private set; }

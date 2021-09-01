@@ -13,6 +13,8 @@ namespace MoviesRentalService.Application.Rent.Responses
             Movies = movies.Select(movie => new GetAvailableMovieByUserIdResponse(movie));
         }
 
+        public GetAvailableMoviesByUserIdResponse() { }
+
         public IEnumerable<GetAvailableMovieByUserIdResponse> Movies { get; set; }
     }
 

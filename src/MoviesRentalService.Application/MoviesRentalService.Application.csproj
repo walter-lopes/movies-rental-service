@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MoviesRentalService.Domain\MoviesRentalService.Domain.csproj" />
+    <ProjectReference Include="..\MoviesRentalService.Infra\MoviesRentalService.Infra.csproj" />
   </ItemGroup>
 
 </Project>

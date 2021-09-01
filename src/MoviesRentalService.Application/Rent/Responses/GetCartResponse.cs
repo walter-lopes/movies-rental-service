@@ -15,6 +15,8 @@ namespace MoviesRentalService.Application.Rent.Responses
             Total = Items.Sum(x => x.Price);
         }
 
+        public GetCartResponse() {}
+
         public IEnumerable<GetCartMovieItemRespose> Items { get; set; }
 
         public decimal Total { get; set; }
