@@ -1,4 +1,4 @@
-﻿using MoviesRentalService.Domain.Rental;
+﻿using MoviesRentalService.Domain.Rent;
 using System;
 using System.Threading.Tasks;
 

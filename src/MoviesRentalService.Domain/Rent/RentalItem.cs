@@ -1,8 +1,7 @@
 ﻿using MoviesRentalService.Domain.Catalog;
-using MoviesRentalService.Domain.Rent;
 using System;
 
-namespace MoviesRentalService.Domain.Rental
+namespace MoviesRentalService.Domain.Rent
 {
     public class RentalItem
     {

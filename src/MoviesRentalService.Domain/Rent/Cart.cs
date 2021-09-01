@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MoviesRentalService.Domain.Rental
+namespace MoviesRentalService.Domain.Rent
 {
     public class Cart
     {
