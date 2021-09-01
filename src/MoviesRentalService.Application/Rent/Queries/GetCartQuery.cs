@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Aloha.CQRS.Queries;
+using MoviesRentalService.Application.Rent.Responses;
+using System;
 
 namespace MoviesRentalService.Application.Rent.Queries
 {
-    class GetCartQuery
-    {
-    }
+    public record GetCartQuery(Guid UserId) : IQuery<GetCartResponse>;
 }
