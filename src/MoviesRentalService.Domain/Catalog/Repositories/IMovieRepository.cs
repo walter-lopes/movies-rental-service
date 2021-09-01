@@ -1,7 +1,14 @@
-﻿namespace MoviesRentalService.Domain.Catalog.Repositories
+﻿using System;
+using System.Threading.Tasks;
+
+namespace MoviesRentalService.Domain.Catalog.Repositories
 {
     public interface IMovieRepository
     {
-        void Save(Movie movie);
+        void Insert(Movie movie);
+
+        void Update(Movie movie);
+
+        Task<Movie> GetByIdAsync(Guid id);
     }
 }

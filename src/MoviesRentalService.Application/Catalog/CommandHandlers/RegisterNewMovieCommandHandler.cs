@@ -19,7 +19,7 @@ namespace MoviesRentalService.Application.Catalog.CommandHandlers
         {
             var movie = new Movie(command.Name, command.Description, command.Price);
 
-            _repository.Save(movie);
+            _repository.Insert(movie);
 
             return Task.CompletedTask;
         }
