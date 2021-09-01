@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesRentalService.UnitTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesRentalService.Application", "src\MoviesRentalService.Application\MoviesRentalService.Application.csproj", "{FFC6ACF2-C17B-4BE5-ACA0-992A1B0AB905}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesRentalService.Infra", "src\MoviesRentalService.Infra\MoviesRentalService.Infra.csproj", "{79043D48-FC4D-4DCA-8C86-989B1554C438}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{FFC6ACF2-C17B-4BE5-ACA0-992A1B0AB905}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFC6ACF2-C17B-4BE5-ACA0-992A1B0AB905}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFC6ACF2-C17B-4BE5-ACA0-992A1B0AB905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79043D48-FC4D-4DCA-8C86-989B1554C438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79043D48-FC4D-4DCA-8C86-989B1554C438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79043D48-FC4D-4DCA-8C86-989B1554C438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79043D48-FC4D-4DCA-8C86-989B1554C438}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{78A82A35-22A5-44D3-B4BC-44D7F9CDEEED} = {6B4C3CE6-B431-4D63-9F26-D9FAFE8B9F96}
 		{18A1B850-6DED-4104-B9CD-5FC788338DA6} = {3858EC77-FFA9-485B-9EBF-72DCDA3D73D9}
 		{FFC6ACF2-C17B-4BE5-ACA0-992A1B0AB905} = {6B4C3CE6-B431-4D63-9F26-D9FAFE8B9F96}
+		{79043D48-FC4D-4DCA-8C86-989B1554C438} = {6B4C3CE6-B431-4D63-9F26-D9FAFE8B9F96}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C75BC0DE-28CE-4BD7-B4D9-DCE413AE642E}
