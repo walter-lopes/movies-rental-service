@@ -40,6 +40,10 @@ namespace MoviesRentalService.Domain.Rent
             return Items.Sum(x => x.Price);
         }
 
-        public IEnumerable<Guid> GetMovies() => Items.Select(item => item.MovieId);
+        public HashSet<Guid> GetMovies()
+        {
+           return new HashSet<Guid>(Items.Select(item => item.MovieId));
+        }
+
     }
 }

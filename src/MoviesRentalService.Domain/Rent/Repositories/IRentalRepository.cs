@@ -8,8 +8,8 @@ namespace MoviesRentalService.Domain.Rent.Repositories
     {
         void Insert(Rental rental);
 
-        Task<bool> ExistsByMovieIdsAsync(IEnumerable<Guid> movieIds, Guid userId);
+        Task<bool> ExistsByMovieIdsAsync(HashSet<Guid> movieIds, Guid userId);
 
-        Task<Rental> GetAllAvailableByUserId(Guid userId);
+        Task<IEnumerable<Rental>> GetAllAvailableByUserId(Guid userId);
     }
 }
