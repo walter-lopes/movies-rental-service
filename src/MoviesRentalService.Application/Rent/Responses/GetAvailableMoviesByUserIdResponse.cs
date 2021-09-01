@@ -8,9 +8,9 @@ namespace MoviesRentalService.Application.Rent.Responses
 {
     public class GetAvailableMoviesByUserIdResponse
     {
-        public GetAvailableMoviesByUserIdResponse(IEnumerable<Movie> movies, Rental rental)
+        public GetAvailableMoviesByUserIdResponse(IEnumerable<Movie> movies)
         {
-            Movies = movies.Select(movie => new GetAvailableMovieByUserIdResponse(movie, rental));
+            Movies = movies.Select(movie => new GetAvailableMovieByUserIdResponse(movie));
         }
 
         public IEnumerable<GetAvailableMovieByUserIdResponse> Movies { get; set; }
@@ -18,20 +18,14 @@ namespace MoviesRentalService.Application.Rent.Responses
 
     public class GetAvailableMovieByUserIdResponse
     {
-        public GetAvailableMovieByUserIdResponse(Movie movie, Rental rental)
+        public GetAvailableMovieByUserIdResponse(Movie movie)
         {
             Name = movie.Name;
             Description = movie.Description;
-            Start = rental.Start;
-            Expires = rental.Expires;
         }
 
         public string Name { get; set; }
 
         public string Description { get; set; }
-
-        public DateTime Start { get; set; }
-
-        public DateTime Expires { get; set; }
     }
 }

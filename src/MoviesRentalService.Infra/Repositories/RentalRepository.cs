@@ -22,7 +22,7 @@ namespace MoviesRentalService.Infra.Repositories
             return await Collection.Find(filter & filterIn).AnyAsync();
         }
 
-        public async Task<IEnumerable<Rental>> GetAllAvailableByUserId(Guid userId)
+        public async Task<IEnumerable<Rental>> GetAllAvailableByUserIdAsync(Guid userId)
         {
             var filter = Builders<Rental>.Filter.Where(p => p.UserId == userId && p.Expires < DateTime.Now);
 

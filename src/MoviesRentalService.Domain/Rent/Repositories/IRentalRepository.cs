@@ -10,6 +10,6 @@ namespace MoviesRentalService.Domain.Rent.Repositories
 
         Task<bool> ExistsByMovieIdsAsync(HashSet<Guid> movieIds, Guid userId);
 
-        Task<IEnumerable<Rental>> GetAllAvailableByUserId(Guid userId);
+        Task<IEnumerable<Rental>> GetAllAvailableByUserIdAsync(Guid userId);
     }
 }
