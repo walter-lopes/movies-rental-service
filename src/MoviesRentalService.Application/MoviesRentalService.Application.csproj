@@ -8,4 +8,8 @@
     <ProjectReference Include="..\MoviesRentalService.Domain\MoviesRentalService.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Rent\QueryHandlers\" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using MoviesRentalService.Domain.Catalog;
-using MoviesRentalService.Domain.Rental;
+using MoviesRentalService.Domain.Rent;
 using System;
 using System.Linq;
 using Xunit;
