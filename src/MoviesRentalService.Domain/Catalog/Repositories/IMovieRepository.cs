@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MoviesRentalService.Domain.Catalog.Repositories
@@ -10,5 +11,7 @@ namespace MoviesRentalService.Domain.Catalog.Repositories
         void Update(Movie movie);
 
         Task<Movie> GetByIdAsync(Guid id);
+
+        Task<IEnumerable<Movie>> FullSearchAsync(string @param);
     }
 }
