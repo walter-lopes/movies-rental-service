@@ -18,13 +18,13 @@ namespace MoviesRentalService.Domain.Rent
             Items = cart.Items;
         }
 
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public Guid UserId { get; set; }
+        public Guid UserId { get; private set; }
 
-        public DateTime Start { get; set; }
+        public DateTime Start { get; private set; }
 
-        public DateTime Expires { get; set; }
+        public DateTime Expires { get; private set; }
 
         public decimal Total
         {
@@ -35,9 +35,9 @@ namespace MoviesRentalService.Domain.Rent
             private set { }
         }
 
-        public HashSet<RentalItem> Items { get; set; }
+        public HashSet<RentalItem> Items { get; private set; }
 
-        public decimal CalculateTotal()
+        private decimal CalculateTotal()
         {
             return Items.Sum(x => x.Price);
         }
