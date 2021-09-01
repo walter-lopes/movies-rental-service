@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MoviesRentalService.Domain.Rent.Repositories
@@ -7,7 +8,7 @@ namespace MoviesRentalService.Domain.Rent.Repositories
     {
         void Insert(Rental rental);
 
-        Task<bool> ExistsByMovieIdAsync(Guid movieId, Guid userId);
+        Task<bool> ExistsByMovieIdsAsync(IEnumerable<Guid> movieIds, Guid userId);
 
         Task<Rental> GetAllAvailableByUserId(Guid userId);
     }
