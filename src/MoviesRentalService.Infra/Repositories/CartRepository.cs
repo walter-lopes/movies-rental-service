@@ -25,8 +25,6 @@ namespace MoviesRentalService.Infra.Repositories
 
         public void Update(Cart cart)
         {
-            var filter = Builders<Cart>.Filter.Where(x => x.Id == cart.Id);
-
             DbContext.AddCommand(async () => await Collection.FindOneAndReplaceAsync(c => c.Id == cart.Id, cart));
         }
     }
