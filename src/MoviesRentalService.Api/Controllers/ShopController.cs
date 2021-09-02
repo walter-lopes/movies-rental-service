@@ -7,6 +7,7 @@ using MoviesRentalService.Api.Attributes;
 using MoviesRentalService.Application.Rent.Command;
 using MoviesRentalService.Application.Rent.Queries;
 using MoviesRentalService.Application.Rent.Requests;
+using MoviesRentalService.Domain.Identity;
 using MoviesRentalService.Infra.Identity;
 using System;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace MoviesRentalService.Api.Controllers
         }
 
         [HttpPost("rent")]
-        [AuthorizeRoles("customer")]
+        [AuthorizeRoles(Scopes.CUSTOMER_SCOPE)]
         public async Task<IActionResult> Rent()
         {
             Guid userId = User.Identity.GetUserId();
@@ -43,7 +44,7 @@ namespace MoviesRentalService.Api.Controllers
         }
 
         [HttpPost("cart/clean")]
-        [AuthorizeRoles("customer")]
+        [AuthorizeRoles(Scopes.CUSTOMER_SCOPE)]
         public async Task<IActionResult> CleanCart()
         {
             Guid userId = User.Identity.GetUserId();
@@ -56,7 +57,7 @@ namespace MoviesRentalService.Api.Controllers
         }
 
         [HttpPost("cart")]
-        [AuthorizeRoles("customer")]
+        [AuthorizeRoles(Scopes.CUSTOMER_SCOPE)]
         public async Task<IActionResult> AddMovieToCart(AddMovieToCartRequest request)
         {
             Guid userId = User.Identity.GetUserId();
@@ -68,7 +69,7 @@ namespace MoviesRentalService.Api.Controllers
         }
 
         [HttpGet("cart")]
-        [AuthorizeRoles("customer")]
+        [AuthorizeRoles(Scopes.CUSTOMER_SCOPE)]
         public async Task<IActionResult> GetCart()
         {
             Guid userId = User.Identity.GetUserId();
@@ -81,7 +82,7 @@ namespace MoviesRentalService.Api.Controllers
         }
 
         [HttpGet("available-movies")]
-        [AuthorizeRoles("customer")]
+        [AuthorizeRoles(Scopes.CUSTOMER_SCOPE)]
         public async Task<IActionResult> GetAvailableMovies()
         {
             Guid userId = User.Identity.GetUserId();

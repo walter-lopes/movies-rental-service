@@ -7,6 +7,7 @@ using MoviesRentalService.Api.Attributes;
 using MoviesRentalService.Application.Catalog.Commands;
 using MoviesRentalService.Application.Catalog.Queries;
 using MoviesRentalService.Application.Catalog.Requests;
+using MoviesRentalService.Domain.Identity;
 using System;
 using System.Threading.Tasks;
 
@@ -29,7 +30,7 @@ namespace MoviesRentalService.Api.Controllers
         }
 
         [HttpPost]
-        [AuthorizeRoles("admin")]
+        [AuthorizeRoles(Scopes.ADMIN_SCOPE)]
         public async Task<IActionResult> Post([FromBody] RegisterNewMovieRequest request)
         {
             if (request.IsInvalid())
@@ -46,7 +47,7 @@ namespace MoviesRentalService.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        [AuthorizeRoles("admin")]
+        [AuthorizeRoles(Scopes.ADMIN_SCOPE)]
         public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] UpdateMovieRequest request)
         {
             if (request.IsInvalid())

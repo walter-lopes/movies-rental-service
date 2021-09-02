@@ -11,14 +11,13 @@ namespace MoviesRentalService.UnitTests.Domain
         {
             string name = "Michael Scott";
             string email = "michael.scott@dundermifflin.com";
-            string role = "customer";
 
-            var user = new User(name, email, role);
+            var user = new User(name, email);
 
             user.Id.Should().NotBeEmpty();
             user.Email.Should().Be(email);
             user.Name.Should().Be(name);
-            user.Role.Should().Be(role);
+            user.Role.Should().Be(Scopes.CUSTOMER_SCOPE);
         }
     }
 }

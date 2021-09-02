@@ -43,7 +43,7 @@ namespace MoviesRentalService.Application.Identity.CommandHandlers
                     return;
                 }
 
-                var user = new User(command.Name, command.Email, "customer");
+                var user = new User(command.Name, command.Email);
                 string passwordHash = _hasher.Create(user, command.Password);
 
                 user.SetPasswordHash(passwordHash);
