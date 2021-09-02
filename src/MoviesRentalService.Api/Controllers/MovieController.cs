@@ -55,6 +55,16 @@ namespace MoviesRentalService.Api.Controllers
             return Response(response);
         }
 
+        [HttpGet("{page}/{items}")]
+        public async Task<IActionResult> GetAll(int page = 0, int items = 1)
+        {
+            GetAllMoviesPagedQuery query = new(page, items);
+
+            var response = await _queryDispatcher.QueryAsync(query);
+
+            return Response(response);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {

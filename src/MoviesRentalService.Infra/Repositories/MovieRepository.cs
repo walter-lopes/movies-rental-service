@@ -1,4 +1,5 @@
 ﻿using Aloha.CQRS.Queries;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MoviesRentalService.Domain.Catalog;
 using MoviesRentalService.Domain.Catalog.Repositories;
@@ -15,8 +16,6 @@ namespace MoviesRentalService.Infra.Repositories
 
         public async Task<PagedResult<Movie>> FullSearchAsync(string param, int page, int items)
         {
-            var filterName = Builders<Movie>.Filter.Where(p => p.Name.ToLowerInvariant().Contains(param));
-
             var query = Collection.Find(p => p.Name.ToLowerInvariant().Contains(param));
 
             var totalTask = query.CountDocumentsAsync();
@@ -24,11 +23,27 @@ namespace MoviesRentalService.Infra.Repositories
 
             await Task.WhenAll(totalTask, itemsTask);
 
-            var customers = itemsTask.Result;
+            var movies = itemsTask.Result;
             var total = totalTask.Result;
             var totalPages = (int)Math.Ceiling((decimal)total / items);
 
-            return PagedResult<Movie>.Create(customers, page, items, totalPages, total);
+            return PagedResult<Movie>.Create(movies, page, items, totalPages, total);
+        }
+
+        public async Task<PagedResult<Movie>> GetAllPagedAsync(int page, int items)
+        {
+            var query = Collection.Find(new BsonDocument());
+
+            var totalTask = query.CountDocumentsAsync();
+            var itemsTask = query.Skip(page * items).Limit(items).ToListAsync();
+
+            await Task.WhenAll(totalTask, itemsTask);
+
+            var movies = itemsTask.Result;
+            var total = totalTask.Result;
+            var totalPages = (int)Math.Ceiling((decimal)total / items);
+
+            return PagedResult<Movie>.Create(movies, page, items, totalPages, total);
         }
 
         public async Task<Movie> GetByIdAsync(Guid id)
