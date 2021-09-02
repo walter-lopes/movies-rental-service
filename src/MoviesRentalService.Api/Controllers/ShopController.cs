@@ -42,6 +42,19 @@ namespace MoviesRentalService.Api.Controllers
             return Response();
         }
 
+        [HttpPost("cart/clean")]
+        [AuthorizeRoles("customer")]
+        public async Task<IActionResult> CleanCart()
+        {
+            Guid userId = User.Identity.GetUserId();
+
+            CleanCartCommand command = new(userId);
+
+            await _commandDispatcher.SendAsync(command);
+
+            return Response();
+        }
+
         [HttpPost("cart")]
         [AuthorizeRoles("customer")]
         public async Task<IActionResult> AddMovieToCart(AddMovieToCartRequest request)
