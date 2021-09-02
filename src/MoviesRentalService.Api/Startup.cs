@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
@@ -81,6 +82,12 @@ namespace MoviesRentalService.Api
                     }
                 });
             });
+
+            services.AddHealthChecks()
+                .AddMongoDb(
+                mongodbConnectionString: Configuration.GetSection("Mongo:ConnectionString").Value,
+                name: Configuration.GetSection("Mongo:DataBase").Value,
+                failureStatus: HealthStatus.Unhealthy);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -102,6 +109,7 @@ namespace MoviesRentalService.Api
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecks("/healthcheck");
                 endpoints.MapControllers();
             });
         }
