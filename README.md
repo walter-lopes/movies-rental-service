@@ -52,16 +52,17 @@ Some postman collections are on the /requests directory.
 
 ## Use cases
 
-- Auth
+### Auth
 ![auth](https://github.com/walter-lopes/movies-rental-service/blob/master/docs/auth.png)
-
-- Catalog 
+----------
+### Catalog
 
 ![catalog](https://github.com/walter-lopes/movies-rental-service/blob/master/docs/catalog.png)
 
-- Rent
+----------
+### Rent
 ![rent](https://github.com/walter-lopes/movies-rental-service/blob/master/docs/rent.png)
-
+----------
 ## Why cqrs approach
 
 Cqrs is a pattern that help us to separate commands (writes) to queries (retrieves), this pattern is useful to understand what is happen in the system and what are the user intentions, is more explicit and imperative.
