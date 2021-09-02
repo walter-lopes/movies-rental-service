@@ -9,10 +9,6 @@ using MoviesRentalService.Domain.Rent;
 using MoviesRentalService.Domain.Rent.Repositories;
 using MoviesRentalService.Infra.UoW;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -134,6 +130,7 @@ namespace MoviesRentalService.UnitTests.CommandHandlers
             movieRepository.Verify(x => x.GetByIdAsync(movieId), Times.Once);
             notificationDispatcher.Verify(x => x.PublishAsync(It.IsAny<DomainNotification>()), Times.Never);
             cartRepository.Verify(x => x.Update(cart), Times.Once);
+            uow.Verify(x => x.Commit(), Times.Once);
         }
     }
 }
