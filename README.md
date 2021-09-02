@@ -13,7 +13,8 @@ Base language and concepts that you'll find in this project:
 - unit of work approach to guarantee consistency.
 - domain driven design concept [ubiquitous language, encapsulation, entities and value objects]
 - notification pattern approach
-
+- 
+###Accesses
 
 > admin access
 admin user -> admin@gmail.com
