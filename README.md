@@ -25,6 +25,34 @@ customer user -> customer@gmail.com
 customer password -> customer
 ----------
 
+### Requirements
+
+Authorization and Authentication
+
+- The system should provide an user with admin role to register the movies catalog.
+- The system should provide to the customer, a sign up and sign in process to rent the movies.
+- The user email should be unique.
+
+
+Registering a movie catalog
+
+- Just admin users can register movies.
+- Just admin users can update a movie.
+- The movie catalog needs to have:
+    - Name
+    - Description
+    - Price
+
+Renting a movie
+
+- Just a customer users can rent a movie
+- Customers can rent more than one movie.
+- The movies are digital so it is not necessary to have a stock control.
+- The rental period is 3 days after a customer rents the movie.
+- The customer is not allowed to rent the same movie in the same period.
+- The customer cannot renew the rental.
+----------
+
 ## Structure
 
 This project is structured in multi layers:
