@@ -26,14 +26,12 @@ namespace MoviesRentalService.UnitTests.Domain
         {
             string name = "The lord of the rings - Return of the king";
             string description = "Adventure movie";
-            int stock = 10;
             decimal price = 10.5M;
             
             var movie = new Movie(name, description, price);
 
             name = "The lord of the rings - The Two Towers";
             description = "Adventure movie updated";
-            stock = 5;
             price = 8.5M;
 
             movie.Update(name, description, price);

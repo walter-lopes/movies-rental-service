@@ -30,12 +30,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44316/v1/accounts/signin",
-							"protocol": "https",
+							"raw": "http://localhost:5000/v1/accounts/signin",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "44316",
+							"port": "5000",
 							"path": [
 								"v1",
 								"accounts",
@@ -67,12 +67,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44316/v1/accounts/signup",
-							"protocol": "https",
+							"raw": "http://localhost:5000/v1/accounts/signup",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "44316",
+							"port": "5000",
 							"path": [
 								"v1",
 								"accounts",
@@ -104,12 +104,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44316/v1/accounts/signin",
-							"protocol": "https",
+							"raw": "http://localhost:5000/v1/accounts/signin",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "44316",
+							"port": "5000",
 							"path": [
 								"v1",
 								"accounts",
@@ -157,12 +157,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44316/v1/movies",
-							"protocol": "https",
+							"raw": "http://localhost:5000/v1/movies",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "44316",
+							"port": "5000",
 							"path": [
 								"v1",
 								"movies"
@@ -203,12 +203,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44316/v1/movies/54e5b5a8-e605-43d2-a0ba-9c44f548d674",
-							"protocol": "https",
+							"raw": "http://localhost:5000/v1/movies/54e5b5a8-e605-43d2-a0ba-9c44f548d674",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "44316",
+							"port": "5000",
 							"path": [
 								"v1",
 								"movies",
@@ -224,12 +224,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:44316/v1/movies/0/10",
-							"protocol": "https",
+							"raw": "http://localhost:5000/v1/movies/0/10",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "44316",
+							"port": "5000",
 							"path": [
 								"v1",
 								"movies",
@@ -246,12 +246,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:44316/v1/movies/full-search/lord/0/1",
-							"protocol": "https",
+							"raw": "http://localhost:5000/v1/movies/full-search/lord/0/1",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "44316",
+							"port": "5000",
 							"path": [
 								"v1",
 								"movies",
@@ -270,12 +270,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:44316/v1/movies/123b4670-87dd-47ee-b973-e61c8b5104f3",
-							"protocol": "https",
+							"raw": "http://localhost:5000/v1/movies/123b4670-87dd-47ee-b973-e61c8b5104f3",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "44316",
+							"port": "5000",
 							"path": [
 								"v1",
 								"movies",
@@ -323,12 +323,12 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:44316/v1/shop/cart",
-							"protocol": "https",
+							"raw": "http://localhost:5000/v1/shop/cart",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "44316",
+							"port": "5000",
 							"path": [
 								"v1",
 								"shop",
@@ -354,12 +354,12 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:44316/v1/shop/rent",
-							"protocol": "https",
+							"raw": "http://localhost:5000/v1/shop/rent",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "44316",
+							"port": "5000",
 							"path": [
 								"v1",
 								"shop",
@@ -385,12 +385,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:44316/v1/shop/available-movies",
-							"protocol": "https",
+							"raw": "http://localhost:5000/v1/shop/available-movies",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "44316",
+							"port": "5000",
 							"path": [
 								"v1",
 								"shop",
