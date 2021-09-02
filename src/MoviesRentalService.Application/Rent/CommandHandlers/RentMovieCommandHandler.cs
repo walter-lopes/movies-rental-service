@@ -31,6 +31,12 @@ namespace MoviesRentalService.Application.Rent.CommandHandlers
             {
                 var cart = await _cartRepository.GetByUserIdAsync(command.UserId);
 
+                if (cart.IsEmpty())
+                {
+                    await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.BadRequest, "The cart is empty."));
+                    return;
+                }
+
                 var rental = new Rental(cart);
 
                 var movieIds = rental.GetMovies();
@@ -39,7 +45,7 @@ namespace MoviesRentalService.Application.Rent.CommandHandlers
 
                 if (alreadyRent)
                 {
-                    await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.NotFound, "The movie already rent."));
+                    await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.BadRequest, "The movie already rent."));
                     return;
                 }
 

@@ -53,7 +53,13 @@ namespace MoviesRentalService.Application.Rent.CommandHandlers
 
                 var item = new RentalItem(movie);
 
-                cart.Add(item);
+                bool added = cart.Add(item);
+
+                if (!added)
+                {
+                    await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.BadRequest, "Movie already in the cart."));
+                    return;
+                }
 
                 _cartRepository.Update(cart);
 
