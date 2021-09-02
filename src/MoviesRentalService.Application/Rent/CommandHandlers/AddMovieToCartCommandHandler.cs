@@ -20,10 +20,11 @@ namespace MoviesRentalService.Application.Rent.CommandHandlers
         private readonly INotificationDispatcher _notificationDispatcher;
         private readonly IUnitOfWork _uoW;
 
-        public AddMovieToCartCommandHandler(ICartRepository cartRepository, IMovieRepository movieRepository, INotificationDispatcher notificationDispatcher, IUnitOfWork uoW)
+        public AddMovieToCartCommandHandler(ICartRepository cartRepository, IMovieRepository movieRepository, IRentalRepository rentalRepository, INotificationDispatcher notificationDispatcher, IUnitOfWork uoW)
         {
             _cartRepository = cartRepository;
             _movieRepository = movieRepository;
+            _rentalRepository = rentalRepository;
             _notificationDispatcher = notificationDispatcher;
             _uoW = uoW;
         }
