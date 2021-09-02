@@ -16,6 +16,7 @@ namespace MoviesRentalService.Application.Rent.CommandHandlers
     {
         private readonly ICartRepository _cartRepository;
         private readonly IMovieRepository _movieRepository;
+        private readonly IRentalRepository _rentalRepository;
         private readonly INotificationDispatcher _notificationDispatcher;
         private readonly IUnitOfWork _uoW;
 
@@ -31,6 +32,14 @@ namespace MoviesRentalService.Application.Rent.CommandHandlers
         {
             try
             {
+                bool existsInRental = await _rentalRepository.ExistsByMovieIdAsync(command.MovieId, command.UserId);
+
+                if (existsInRental)
+                {
+                    await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.BadRequest, "This movie is already rented."));
+                    return;
+                }
+
                 var cartTask = _cartRepository.GetByUserIdAsync(command.UserId);
                 var movieTask = _movieRepository.GetByIdAsync(command.MovieId);
 
@@ -39,17 +48,9 @@ namespace MoviesRentalService.Application.Rent.CommandHandlers
                 Cart cart = cartTask.Result;
                 Movie movie = movieTask.Result;
 
-                if (cart is null)
-                {
-                    await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.NotFound, "Cart not found."));
-                    return;
-                }
+                bool success = await ValidateMovieAndCart(cart, movie);
 
-                if (movie is null)
-                {
-                    await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.NotFound, "Movie not found."));
-                    return;
-                }
+                if (!success) return;
 
                 var item = new RentalItem(movie);
 
@@ -69,6 +70,23 @@ namespace MoviesRentalService.Application.Rent.CommandHandlers
             {
                 await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.InternalServerError, "Internal Server Error."));
             }      
+        }
+
+        private async Task<bool> ValidateMovieAndCart(Cart cart, Movie movie)
+        {
+            if (cart is null)
+            {
+                await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.NotFound, "Cart not found."));
+                return false;
+            }
+
+            if (movie is null)
+            {
+                await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.NotFound, "Movie not found."));
+                return false;
+            }
+
+            return true;
         }
     }
 }

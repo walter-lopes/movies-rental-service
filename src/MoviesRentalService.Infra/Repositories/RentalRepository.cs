@@ -13,6 +13,15 @@ namespace MoviesRentalService.Infra.Repositories
         public RentalRepository(IDbContext context)
          : base(context, "rentals") { }
 
+        public async Task<bool> ExistsByMovieIdAsync(Guid movieId, Guid userId)
+        {
+            var filterIn = Builders<Rental>.Filter.Where(x => x.Items.Any(y => y.MovieId == movieId));
+
+            var filter = Builders<Rental>.Filter.Where(p => p.UserId == userId && p.Expires > DateTime.Now);
+
+            return await Collection.Find(filter & filterIn).AnyAsync();
+        }
+
         public async Task<bool> ExistsByMovieIdsAsync(HashSet<Guid> movieIds, Guid userId)
         {
             var filterIn = Builders<Rental>.Filter.Where(x => x.Items.Any(y => movieIds.Contains(y.MovieId)));
