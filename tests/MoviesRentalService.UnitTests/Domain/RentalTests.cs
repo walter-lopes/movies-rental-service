@@ -27,7 +27,7 @@ namespace MoviesRentalService.UnitTests.Domain
             var rental = new Rental(cart);
 
             rental.Id.Should().NotBeEmpty();
-            rental.Start.Should().BeCloseTo(DateTime.Now);
+            rental.Start.Should().BeCloseTo(DateTime.Now, 50);
             rental.Expires.Should().BeCloseTo(DateTime.Now.AddDays(3));
             rental.Total.Should().Be(10.5M);
             rental.Items.Should().HaveCount(1);
