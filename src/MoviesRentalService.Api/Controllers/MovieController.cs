@@ -45,10 +45,10 @@ namespace MoviesRentalService.Api.Controllers
             return Response();
         }
 
-        [HttpGet("full-search/{params}")]
-        public async Task<IActionResult> FullSearch(string @params)
+        [HttpGet("full-search/{params}/{page}/{items}")]
+        public async Task<IActionResult> FullSearch(string @params, int page = 0, int items = 1)
         {
-            GetMoviesByFullSearchQuery query = new(@params);
+            GetMoviesByFullSearchQuery query = new(@params, page, items);
 
             var response = await _queryDispatcher.QueryAsync(query);
 

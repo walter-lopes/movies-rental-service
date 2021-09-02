@@ -23,15 +23,15 @@ namespace MoviesRentalService.Application.Catalog.QueryHandlers
 
         public async Task<GetMoviesByFullSearchResponse> HandleAsync(GetMoviesByFullSearchQuery query)
         {
-            var movies = await _repository.FullSearchAsync(query.FullSearch);
+            var moviesPaged = await _repository.FullSearchAsync(query.FullSearch, query.Page, query.Items);
 
-            if (movies is null || !movies.Any())
+            if (moviesPaged.Items is null || !moviesPaged.Items.Any())
             {
                 await _notificationDispatcher.PublishAsync(new DomainNotification(HttpStatusCode.NotFound, "Movies not found."));
                 return new GetMoviesByFullSearchResponse();
             }
 
-            return new GetMoviesByFullSearchResponse(movies);
+            return new GetMoviesByFullSearchResponse(moviesPaged);
         }
     }
 }

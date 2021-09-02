@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using Aloha.CQRS.Queries;
+using MongoDB.Driver;
 using MoviesRentalService.Domain.Catalog;
 using MoviesRentalService.Domain.Catalog.Repositories;
 using System;
@@ -12,11 +13,22 @@ namespace MoviesRentalService.Infra.Repositories
         public MovieRepository(IDbContext context)
          : base(context, "movies") { }
 
-        public async Task<IEnumerable<Movie>> FullSearchAsync(string param)
+        public async Task<PagedResult<Movie>> FullSearchAsync(string param, int page, int items)
         {
             var filterName = Builders<Movie>.Filter.Where(p => p.Name.ToLowerInvariant().Contains(param));
 
-            return await Collection.Find(filterName).ToListAsync();
+            var query = Collection.Find(p => p.Name.ToLowerInvariant().Contains(param));
+
+            var totalTask = query.CountDocumentsAsync();
+            var itemsTask = query.Skip(page * items).Limit(items).ToListAsync();
+
+            await Task.WhenAll(totalTask, itemsTask);
+
+            var customers = itemsTask.Result;
+            var total = totalTask.Result;
+            var totalPages = (int)Math.Ceiling((decimal)total / items);
+
+            return PagedResult<Movie>.Create(customers, page, items, totalPages, total);
         }
 
         public async Task<Movie> GetByIdAsync(Guid id)

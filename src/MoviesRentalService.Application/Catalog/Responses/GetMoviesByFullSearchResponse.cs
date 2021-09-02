@@ -1,15 +1,17 @@
-﻿using MoviesRentalService.Domain.Catalog;
+﻿using Aloha.CQRS.Queries;
+using MoviesRentalService.Domain.Catalog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace MoviesRentalService.Application.Catalog.Responses
 {
-    public class GetMoviesByFullSearchResponse
+    public class GetMoviesByFullSearchResponse : PagedResultBase
     {
-        public GetMoviesByFullSearchResponse(IEnumerable<Movie> movies)
+        public GetMoviesByFullSearchResponse(PagedResult<Movie> pagedMovies) 
+            : base(pagedMovies.CurrentPage, pagedMovies.ResultsPerPage, pagedMovies.TotalPages, pagedMovies.TotalResults)
         {
-            Movies = movies.Select(movie => new GetMovieByFullSearchResponse(movie));
+            Movies = pagedMovies.Items.Select(movie => new GetMovieByFullSearchResponse(movie));
         }
 
         public GetMoviesByFullSearchResponse() { }

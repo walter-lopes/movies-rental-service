@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aloha.CQRS.Queries;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -14,6 +15,6 @@ namespace MoviesRentalService.Domain.Catalog.Repositories
 
         Task<IEnumerable<Movie>> GetByIdsAsync(IEnumerable<Guid> ids);
 
-        Task<IEnumerable<Movie>> FullSearchAsync(string @param);
+        Task<PagedResult<Movie>> FullSearchAsync(string param, int page, int items);
     }
 }
