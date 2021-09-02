@@ -45,6 +45,23 @@ namespace MoviesRentalService.Api.Controllers
             return Response();
         }
 
+        [HttpPut("{id}")]
+        [AuthorizeRoles("admin")]
+        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] UpdateMovieRequest request)
+        {
+            if (request.IsInvalid())
+            {
+                await NotifyBadRequestErrorsAsync(request.GetErrors());
+                return Response();
+            }
+
+            UpdateMovieCommand command = request.ToCommand(id);
+
+            await _commandDispatcher.SendAsync(command);
+
+            return Response();
+        }
+
         [HttpGet("full-search/{params}/{page}/{items}")]
         public async Task<IActionResult> FullSearch(string @params, int page = 0, int items = 1)
         {
