@@ -47,9 +47,14 @@ The last layer, it is responsible for data access and configurations.
 
 ## How can we test?
 
-Some postman collections are on the /requests directory.
+Import the postman file "Rent Movies.postman_collection.json", you can find in project /requests directory.
 
+Run the application in simple, on the src\MoviesRentalService.Api directory run this command:
 
+` dotnet run MoviesRentalService.Api.csproj `
+
+ Now listening on: http://localhost:5000 and you can enjoy ! =)
+ 
 ## Use cases
 
 ### Auth
