@@ -1,0 +1,471 @@
+{
+	"info": {
+		"_postman_id": "d8881a9e-018f-4c3d-8349-05b748cedf2b",
+		"name": "Rent Movies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "ADMIN SIGNIN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"admin@gmail.com\",\n\t\"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44316/v1/accounts/signin",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"accounts",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CUSTOMER SIGNUP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/javascript",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"newcustomer@gmail.com\",\n\t\"password\": \"newcustomer\",\n\t\"name\": \"new customer\"\n}",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44316/v1/accounts/signup",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"accounts",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CUSTOMER SIGNIN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"customer@gmail.com\",\n\t\"password\": \"customer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44316/v1/accounts/signin",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"accounts",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Movies Catalogs",
+			"item": [
+				{
+					"name": "REGISTER NEW MOVIE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjM4ZDRlMTQyLTRkMmMtNDJmYi1hYWU2LTA3NzA3MjI0MjI0YSIsImVtYWlsIjoiYWRtaW5AZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiYWRtaW4iLCJuYmYiOjE2MzA1ODE2NTksImV4cCI6MTYzMDU4NTI1OSwiaXNzIjoibW92aWVzIn0.6Bwe9YVt-8lwDpfB-_jnP_DubDqvMNrGJfxw3JVktuM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"other movie\",\r\n  \"description\": \"other description\",\r\n  \"price\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44316/v1/movies",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE A MOVIE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjkwMWU0ZmYyLWMyYjctNGVmYy05NDMwLTU5Mzg2NzBiNWNjOCIsImVtYWlsIjoiY3VzdG9tZXJAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiY3VzdG9tZXIiLCJuYmYiOjE2MzA2MDI4MzksImV4cCI6MTYzMDYwNjQzOSwiaXNzIjoibW92aWVzIn0.eDaGX9Cexcf6kkVLDusF-BviBFX5PYw1z6Rdbi6o0EU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"other movie update\",\r\n  \"description\": \"other description update\",\r\n  \"price\": 101\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44316/v1/movies/54e5b5a8-e605-43d2-a0ba-9c44f548d674",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"movies",
+								"54e5b5a8-e605-43d2-a0ba-9c44f548d674"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL MOVIES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44316/v1/movies/0/10",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"movies",
+								"0",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY FULL TEXT SEARCH",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44316/v1/movies/full-search/lord/0/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"movies",
+								"full-search",
+								"lord",
+								"0",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44316/v1/movies/123b4670-87dd-47ee-b973-e61c8b5104f3",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"movies",
+								"123b4670-87dd-47ee-b973-e61c8b5104f3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Rent",
+			"item": [
+				{
+					"name": "ADD MOVIE TO CART",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjkwMWU0ZmYyLWMyYjctNGVmYy05NDMwLTU5Mzg2NzBiNWNjOCIsImVtYWlsIjoiY3VzdG9tZXJAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiY3VzdG9tZXIiLCJuYmYiOjE2MzA2MDE2NTUsImV4cCI6MTYzMDYwNTI1NSwiaXNzIjoibW92aWVzIn0.hOZZA97P-mprh8lyiSjnnT0IaHgQoXj6jxNh_DoBCR4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"movieId\": \"54e5b5a8-e605-43d2-a0ba-9c44f548d674\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44316/v1/shop/cart",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"shop",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RENT A MOVIE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjkwMWU0ZmYyLWMyYjctNGVmYy05NDMwLTU5Mzg2NzBiNWNjOCIsImVtYWlsIjoiY3VzdG9tZXJAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiY3VzdG9tZXIiLCJuYmYiOjE2MzA2MDE2NTUsImV4cCI6MTYzMDYwNTI1NSwiaXNzIjoibW92aWVzIn0.hOZZA97P-mprh8lyiSjnnT0IaHgQoXj6jxNh_DoBCR4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44316/v1/shop/rent",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"shop",
+								"rent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET RENT AVAILABLE MOVIE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjkwMWU0ZmYyLWMyYjctNGVmYy05NDMwLTU5Mzg2NzBiNWNjOCIsImVtYWlsIjoiY3VzdG9tZXJAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiY3VzdG9tZXIiLCJuYmYiOjE2MzA2MDE2NTUsImV4cCI6MTYzMDYwNTI1NSwiaXNzIjoibW92aWVzIn0.hOZZA97P-mprh8lyiSjnnT0IaHgQoXj6jxNh_DoBCR4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44316/v1/shop/available-movies",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"shop",
+								"available-movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET CART",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjkwMWU0ZmYyLWMyYjctNGVmYy05NDMwLTU5Mzg2NzBiNWNjOCIsImVtYWlsIjoiY3VzdG9tZXJAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiY3VzdG9tZXIiLCJuYmYiOjE2MzA2MDI4MzksImV4cCI6MTYzMDYwNjQzOSwiaXNzIjoibW92aWVzIn0.eDaGX9Cexcf6kkVLDusF-BviBFX5PYw1z6Rdbi6o0EU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44316/v1/shop/cart",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"shop",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CLEAN CART",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjkwMWU0ZmYyLWMyYjctNGVmYy05NDMwLTU5Mzg2NzBiNWNjOCIsImVtYWlsIjoiY3VzdG9tZXJAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiY3VzdG9tZXIiLCJuYmYiOjE2MzA2MDI4MzksImV4cCI6MTYzMDYwNjQzOSwiaXNzIjoibW92aWVzIn0.eDaGX9Cexcf6kkVLDusF-BviBFX5PYw1z6Rdbi6o0EU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44316/v1/shop/cart/clean",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44316",
+							"path": [
+								"v1",
+								"shop",
+								"cart",
+								"clean"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
