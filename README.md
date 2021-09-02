@@ -52,6 +52,7 @@ Some postman collections are on the /requests directory.
 
 ## Use cases
 
+![auth](https://github.com/walter-lopes/movies-rental-service/blob/master/docs/auth.png)
 
 ## Why cqrs approach
 
