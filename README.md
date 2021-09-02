@@ -15,10 +15,11 @@ Base language and concepts that you'll find in this project:
 - notification pattern approach
 
 
-> access
+> admin access
 admin user -> admin@gmail.com
 admin password -> admin
 
+> customer access
 customer user -> customer@gmail.com
 customer password -> customer
 ----------
