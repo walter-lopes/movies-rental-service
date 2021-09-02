@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using MoviesRentalService.Infra.Identity;
@@ -16,20 +18,26 @@ namespace MoviesRentalService.Api
                 configuration = serviceProvider.GetService<IConfiguration>();
             }
             var options = configuration.GetOptions<JwtOptions>("jwt");
+            var key = Encoding.ASCII.GetBytes(options.SecretKey);
             services.AddSingleton(options);
             services.AddSingleton<IJwtHandler, JwtHandler>();
-            services.AddAuthentication()
-                .AddJwtBearer(cfg =>
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(cfg =>
+            {
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+                cfg.TokenValidationParameters = new TokenValidationParameters
                 {
-                    cfg.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.SecretKey)),
-                        ValidIssuer = options.Issuer,
-                        ValidAudience = options.ValidAudience,
-                        ValidateAudience = options.ValidateAudience,
-                        ValidateLifetime = options.ValidateLifetime
-                    };
-                });
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
 
         }
 

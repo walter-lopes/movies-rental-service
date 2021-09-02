@@ -9,13 +9,10 @@ namespace MoviesRentalService.Infra.Identity
     {
         public static Guid GetUserId(this IIdentity identity)
         {
-            ClaimsIdentity claimsIdentity = identity as ClaimsIdentity;
-            Claim claim = claimsIdentity?.FindFirst(JwtRegisteredClaimNames.UniqueName);
-
-            if (claim == null)
+            if (identity.Name == null)
                 return Guid.Empty;
 
-            return new Guid(claim.Value);
+            return new Guid(identity.Name);
         }
     }
 }
